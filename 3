@@ -1,0 +1,33 @@
+
+
+stuck n = stuckH n 0 [n] 
+
+stuckH :: Int -> Int -> [Int] -> (Int,[Int])
+stuckH n i seen 
+  | next `elem` seen = (i,seen)
+  | otherwise        = stuckH next (i+1) (next:seen)
+  where next = factorialLoop n 
+
+factorial 0 = 1 
+factorial n = foldl (*) 1 [1..n]
+
+factorialLoop n = sum (map factorial (digits n))
+
+digits :: Int -> [Int]
+digits n = map toInt (show n) 
+
+toInt :: Char -> Int
+toInt '0' = 0 
+toInt '1' = 1 
+toInt '2' = 2 
+toInt '3' = 3 
+toInt '4' = 4 
+toInt '5' = 5 
+toInt '6' = 6 
+toInt '7' = 7 
+toInt '8' = 8 
+toInt '9' = 9 
+
+
+
+
